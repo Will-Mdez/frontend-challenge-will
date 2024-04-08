@@ -1,0 +1,50 @@
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg sm:px-56	">
+    <table
+      class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+    >
+      <thead
+        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+      >
+        <tr>
+          <th scope="col" class="px-6 py-3">Title</th>
+          <th scope="col" class="px-6 py-3">
+            <div class="flex items-center">
+              Repository
+              
+            </div>
+          </th>
+          <th scope="col" class="px-6 py-3">
+            <div class="flex items-center">
+             Commit
+              
+            </div>
+          </th>
+          <th scope="col" class="px-6 py-3">
+            <div class="flex items-center">
+             Link
+             
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+  *ngFor="let issue of data"
+>
+  <td
+    scope="row"
+    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+  >
+    <a href="{{ issue.repository.owner.html_url }}" target="_blank">{{ issue.commit.author.name }}</a>
+  </td>
+  <td class="px-6 py-4">{{ issue.repository.name }}	</td>
+  <td class="px-6 py-4">{{ issue.commit.message }}</td>
+  <td class="px-6 py-4"><a class="underline" href="{{ issue.html_url }}">link</a></td>
+  <!-- Añade más campos según la estructura de datos de la respuesta de la API -->
+</tr>
+
+      </tbody>
+    </table>
+  </div>
+  
