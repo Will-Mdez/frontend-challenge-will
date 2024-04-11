@@ -29,3 +29,7 @@ We could be sneaky and not say anything else, but here's some things we're looki
 ## Submission notes
 
 Please create a fork to this repository to have account of your task.
+
+## NOTE
+
+You have to replase your GitHub personal Token in api.service.ts
