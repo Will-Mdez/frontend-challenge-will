@@ -67,9 +67,15 @@
       >
         <td
           scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          class="flex px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white justify-between"
         >
-          <a href="{{ issue.html_url }}" target="_blank">{{ issue.name }}</a>
+          <button
+            class="text-white text-sm rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            type="button"
+            (click)="toggleModal(issue)"
+          >
+            {{ issue.name }}
+          </button>
         </td>
         <td class="px-6 py-4">{{ issue.repository.owner.login }}</td>
         <td class="px-6 py-4">{{ issue.repository.name }}</td>
@@ -80,4 +86,51 @@
       </tr>
     </tbody>
   </table>
+
+  <div
+    *ngIf="showModal"
+    class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex"
+  >
+    <div class="relative w-auto my-6 mx-auto max-w-3xl">
+      <!--content-->
+      <div
+        class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none"
+      >
+        <!--header-->
+        <div
+          class="flex items-start justify-between p-2 border-b border-solid border-blueGray-200 rounded-t"
+        >
+          <h3 class="text-xl font-semibold">{{ selectedIssue?.name }}</h3>
+          
+        </div>
+        <!--body-->
+        <div class="relative flex-auto">
+          <figure class="flex flex-col items-center justify-center py-8 px-16 text-center bg-white border-b border-gray-200 md:rounded-se-lg dark:bg-gray-800 dark:border-gray-700">
+           
+            <figcaption class="flex items-center justify-center ">
+                <img class="rounded-full w-9 h-9" src="{{ selectedIssue?.repository.owner.avatar_url }}" alt="profile picture">
+                <div class="space-y-0.5 font-medium dark:text-white text-left rtl:text-right ms-3">
+                    <div>{{ selectedIssue?.repository.owner.login }}</div>
+                    <div class="text-sm text-gray-500 dark:text-gray-400">{{ selectedIssue?.repository.full_name }}</div>
+                </div>
+            </figcaption>    
+        </figure>
+        </div>
+        <!--footer-->
+        <div
+          class="flex items-center justify-end p-2 border-t border-solid border-blueGray-200 rounded-b"
+        >
+          <button
+            class="text-red-500 background-transparent font-bold uppercase px-2 py-1  outline-none focus:outline-none  ease-linear transition-all duration-150"
+            type="button"
+            (click)="toggleModal(null)"
+          >
+            Close
+          </button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
 </div>

@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { CodeSearchComponent } from './components/code-search/code-search.component';
 import { CommitSearchComponent } from './components/commit-search/commit-search.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     SearchPageComponent,
     CodeSearchComponent,
     CommitSearchComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule  ,

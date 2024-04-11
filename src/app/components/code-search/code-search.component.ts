@@ -10,6 +10,9 @@ import { ApiService } from '../../service/api.service';
 export class CodeSearchComponent implements OnInit {
   data: any[] = [];
 
+  showModal = false;
+  modalTitle: string = '';
+
   constructor(private githubApiService: ApiService) { }
 
   ngOnInit(): void {
@@ -17,6 +20,13 @@ export class CodeSearchComponent implements OnInit {
       this.data = response.items;
       console.log(this.data);
     });
+  }
+
+  selectedIssue: any;
+
+  toggleModal(issue: any) { // Recibe el problema seleccionado como argumento
+    this.selectedIssue = issue; // Almacena el problema seleccionado
+    this.showModal = !this.showModal;
   }
 
 }
